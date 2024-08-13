@@ -10,11 +10,16 @@ export const AppDataSource = new DataSource({
   database: AppConstants.postgresDB,
   synchronize: false,
   logging: true,
-  entities: ["src/database/entity/**/*.ts", "build/database/entity/**/*.js"],
+  entities: [
+    AppConstants.nodeEnv === "dev"
+      ? "src/database/entity/**/*.ts"
+      : "build/database/entity/**/*.js",
+  ],
   subscribers: [],
   migrations: [
-    "src/database/migrations/**/*.ts",
-    "build/database/migrations/**/*.js",
+    AppConstants.nodeEnv === "dev"
+      ? "src/database/migrations/**/*.ts"
+      : "build/database/migrations/**/*.js",
   ],
 });
 
