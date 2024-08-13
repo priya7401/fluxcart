@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { QueryFailedError } from 'typeorm';
-import { HttpStatusCode } from '../config/messages';
-import { messages } from '../config/httpStatusCodes';
+import { HttpStatusCode } from "../config/httpStatusCodes";
+import { messages } from "../config/messages";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
 export const errorHanlder = async (error: any, req: Request, res: Response, next: NextFunction) => {
   console.log('error handler');
   console.log(error);
