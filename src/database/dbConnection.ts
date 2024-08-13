@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { AppConstants } from '../config/appConstants';
 
 export const AppDataSource = new DataSource({
-  type: 'postgres',
+  type: "postgres",
   host: AppConstants.postgresHost,
   port: AppConstants.postgresPort,
   username: AppConstants.postgresUsername,
@@ -10,9 +10,17 @@ export const AppDataSource = new DataSource({
   database: AppConstants.postgresDB,
   synchronize: false,
   logging: true,
-  entities: ['src/database/entity/**/*.ts'],
+  entities: [
+    AppConstants.nodeEnv === "dev"
+      ? "src/database/entity/**/*.ts"
+      : "build/database/entity/**/*.js",
+  ],
   subscribers: [],
-  migrations: ['src/database/migrations/**/*.ts'],
+  migrations: [
+    AppConstants.nodeEnv === "dev"
+      ? "src/database/migrations/**/*.ts"
+      : "build/database/migrations/**/*.js",
+  ],
 });
 
 export const connectDB = () =>
