@@ -12,3 +12,6 @@
 2. Run "npm i" to install all the dependencies
 3. Run "npm run nodemon-dev" - this will start the index.ts file as the starting point for the server using nodemon
 4. typeorm migration scripts can be found in the package.json file
+
+## API end-point hosted on render: 
+   #### POST https://fluxcart-x94t.onrender.com/api/v1/identify
