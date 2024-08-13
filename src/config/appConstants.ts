@@ -11,7 +11,7 @@ export const AppConstants = {
   postgresDB: process.env.POSTGRES_DATABASE,
 };
 
-export enum LinkPrecendence {
+export enum LinkPrecedence {
   primary = "primary",
   secondary = "secondary",
 }

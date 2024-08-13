@@ -6,24 +6,28 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from "typeorm";
-import { LinkPrecendence } from "../../config/appConstants";
+import { LinkPrecedence } from "../../config/appConstants";
 
 @Entity("contacts")
 export class Contact {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ nullable: true })
   phoneNumber: string;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ nullable: true })
   email: string;
 
   @Column({ nullable: true })
   linkedId: number;
 
-  @Column({ type: "enum", enum: LinkPrecendence })
-  linkPrecedence: LinkPrecendence;
+  @Column({
+    type: "enum",
+    enum: LinkPrecedence,
+    default: LinkPrecedence.primary,
+  })
+  linkPrecedence: LinkPrecedence;
 
   @CreateDateColumn({ type: "timestamptz", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
